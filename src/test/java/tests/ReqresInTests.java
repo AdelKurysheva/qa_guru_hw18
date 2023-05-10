@@ -37,7 +37,6 @@ public class ReqresInTests {
                 .statusCode(200)
                 .body("data.name", is("fuchsia rose"))
                 .body("data.color", is("#C74375"));
-
     }
 
     @Test
@@ -50,7 +49,6 @@ public class ReqresInTests {
                 .log().status()
                 .log().body()
                 .statusCode(404);
-
     }
 
     @Test
@@ -63,7 +61,6 @@ public class ReqresInTests {
                 .log().status()
                 .log().body()
                 .statusCode(204);
-
     }
 
     @Test
@@ -81,7 +78,6 @@ public class ReqresInTests {
                 .log().body()
                 .statusCode(400)
                 .body("error", is("Missing password"));
-
     }
 }
 
