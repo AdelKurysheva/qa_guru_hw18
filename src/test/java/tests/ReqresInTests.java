@@ -9,7 +9,6 @@ import static io.restassured.RestAssured.given;
 public class ReqresInTests {
     @Test
     void createUser() {
-
         String data = "{ \"name\": \"morpheus\", \"job\": \"leader\" }";
 
         given()
@@ -56,7 +55,6 @@ public class ReqresInTests {
 
     @Test
     void deleteUser() {
-
         given()
                 .log().uri()
                 .when()
@@ -70,7 +68,6 @@ public class ReqresInTests {
 
     @Test
     void loginUnsuccessful() {
-
         String data = "{ \"email\": \"sydney@fife\" }";
 
         given()
