@@ -25,6 +25,7 @@ public class ReqresInTests {
                 .body("name", is("morpheus"))
                 .body("job", is("leader"));
     }
+
     @Test
     void getNameSingleResource() {
         given()
@@ -39,6 +40,7 @@ public class ReqresInTests {
                 .body("data.color", is("#C74375"));
 
     }
+
     @Test
     void singleResourceNotFound() {
         given()
@@ -51,6 +53,7 @@ public class ReqresInTests {
                 .statusCode(404);
 
     }
+
     @Test
     void deleteUser() {
 
