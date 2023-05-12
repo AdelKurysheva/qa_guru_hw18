@@ -1,30 +1,61 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.10.0'
     id "io.freefair.lombok" version "6.0.0-m2"
 }
 
-group 'guru.qa'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
 }
 
 def restAssuredVersion = "5.3.0",
+    allureVersion = "2.21.0",
     slf4jVersion = "2.0.7"
 
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.20'
     testImplementation(
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "org.assertj:assertj-core:3.24.2",
             "org.junit.jupiter:junit-jupiter:5.9.2",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            "com.fasterxml.jackson.core:jackson-databind:2.15.0",
-            "io.rest-assured:json-schema-validator:5.3.0"
+            'com.codeborne:selenide:6.12.3',
+            'io.qameta.allure:allure-selenide:2.21.0',
+
     )
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 tasks.withType(Test) {
     useJUnitPlatform()
 
